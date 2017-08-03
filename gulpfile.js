@@ -3,6 +3,7 @@
 /**
  * Module dependencies.
  */
+var exec = require('child_process').exec;
 var _ = require('lodash'),
   fs = require('fs'),
   defaultAssets = require('./config/assets/default'),
@@ -12,20 +13,12 @@ var _ = require('lodash'),
   gulp = require('gulp'),
   gulpLoadPlugins = require('gulp-load-plugins'),
   runSequence = require('run-sequence'),
-  plugins = gulpLoadPlugins({
-    rename: {
-      'gulp-angular-templatecache': 'templateCache'
-    }
-  }),
+  plugins = gulpLoadPlugins(),
   pngquant = require('imagemin-pngquant'),
   wiredep = require('wiredep').stream,
   path = require('path'),
   endOfLine = require('os').EOL,
-  protractor = require('gulp-protractor').protractor,
-  webdriver_update = require('gulp-protractor').webdriver_update,
-  webdriver_standalone = require('gulp-protractor').webdriver_standalone,
-  del = require('del'),
-  KarmaServer = require('karma').Server;
+  del = require('del');
 
 // Local settings
 var changedTestFiles = [];
@@ -238,14 +231,6 @@ gulp.task('copyLocalEnvConfig', function () {
 });
 
 
-// Karma test runner task
-gulp.task('karma', function (done) {
-  new KarmaServer({
-    configFile: __dirname + '/karma.conf.js'
-  }, done).start();
-});
-
-
 // Drops the MongoDB database, used in e2e testing
 gulp.task('dropdb', function (done) {
   // Use mongoose configuration
@@ -263,6 +248,13 @@ gulp.task('dropdb', function (done) {
   });
 });
 
+gulp.task('mongo', function (cb) {
+  exec('ping 8.8.8.8', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+})
 
 // Lint project files and minify them into two production files.
 gulp.task('build', function (done) {
@@ -272,10 +264,11 @@ gulp.task('build', function (done) {
 
 // Run the project in development mode with node debugger enabled
 gulp.task('default', function (done) {
-  runSequence('env:dev', ['copyLocalEnvConfig'], ['nodemon', 'watch'], done);
+  runSequence('env:dev','mongo', ['copyLocalEnvConfig'], ['nodemon', 'watch'], done);
 });
 
 // Run the project in production mode
 gulp.task('prod', function (done) {
-  runSequence(['copyLocalEnvConfig'], 'build', 'env:prod', 'lint', ['nodemon-nodebug', 'watch'], done);
+  runSequence('mongo', ['copyLocalEnvConfig'], 'build', 'env:prod', 'lint', ['nodemon-nodebug', 'watch'], done);
 });
+
