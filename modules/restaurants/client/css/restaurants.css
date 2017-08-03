@@ -1,0 +1,169 @@
+span.restaurant_details{
+	margin-right: 10px;
+}
+span.restaurant_details:not(:first-child){
+	border-left: 1px solid #cccbcb;
+	padding-left: 10px;
+}
+span.glyphicon-star-empty {
+	color: #bdc3c7;
+}
+span.glyphicon-star.half {
+	position: relative;
+}
+span.glyphicon-star.half:before {
+	 position: relative;
+	 z-index: 9;
+	 width: 47%;
+	 display: block;
+	 overflow: hidden;
+}
+span.glyphicon-star.half:after {
+	 content: '\e006';
+	 position: absolute;
+	 z-index: 8;
+	 color: #bdc3c7;
+	 top: 0;
+	 left: 0;
+}
+span.score {
+	margin-right: 10px;
+	font-weight: bold;
+}
+div.page-header h1 {
+	font-weight: 900;
+}
+div.page-header h2 {
+	font-weight: 900;
+}
+div.restaurant-reviews h2 {
+	margin-bottom: 20px;
+	font-weight: 900;
+}
+div.restaurant-rating {
+	display: inline-flex;
+	font-size: 28px;
+	line-height: 30px;
+}
+div.rating-stars {
+	display: inline-flex;
+}
+div.review-rating {
+	margin-bottom: 10px;
+}
+div.review-rating span.review-date {
+	margin-left: 10px;
+}
+span.review-count {
+	margin-left: 10px;
+	font-size: 14px;
+	float: right;
+	padding-left: 15px;
+}
+div.review-container {
+	border-width: 1px 0;
+	border-style: solid;
+	border-color: #e5e5e5;
+}
+div.review-inner-container {
+	margin: 8px 0 4px;
+	overflow: visible;
+	display: flex;
+	flex-wrap: wrap;
+}
+div.review-col-profile {
+	flex: none;
+	width: 16.66666667%;
+	float: left;
+}
+div.glyphicon-user {
+	font-size: 50px;
+	margin-left: 20px;
+}
+div.review-col-data {
+	flex: none;
+	width: 75%;
+}
+div.rating-summary {
+	margin-bottom: 40px;
+}
+div.rating-summary-container {
+	column-count: 3;
+	font-size: 15px;
+	column-gap: 20px;
+	column-rule-style: solid;
+	column-rule-color: #ebebeb;
+}
+div.rating-summary-container-up {
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+	justify-content: space-around;
+}
+div.rating-summary-container-down {
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+	justify-content: space-around;
+}
+div.rating-category {
+	height: 75px;
+	width: 140px;
+}
+div.rating-category span.text {
+	display: inline-block;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+}
+div.rating-category rating-stars {
+	display: inline-block;
+	font-size: 18px;
+}
+div.page-header {
+	border-bottom-color: #e5e5e5;
+}
+div.group:before,
+div.group:after {
+	content: "";
+	display: table;
+}
+div.group:after {
+	clear: both;
+}
+div.group {
+	clear: both;
+	*zoom: 1;
+}
+d3-bars.restaurant-rating-graph {
+	float: left;
+	width: 63%;
+}
+aside.overview-map{
+	float: right;
+	width: 30%;
+}
+div#map {
+	height: 300px;
+	width: 100%;
+}
+svg {
+	background: linear-gradient(to left, rgba(211, 211, 211, 0), rgba(211, 211, 211, 1));
+	border-radius: 5px;
+}
+svg.barChart {
+	padding: 17px;
+}
+
+footer {
+	text-align: center;
+	font-size: 12px;
+}
+
+.backgroundvideo {
+	position: fixed;top: 50%;left: 50%; min-width: 100%;min-height: 100%;width: auto;height: auto;z-index: -100;-ms-transform: translateX(-50%) translateY(-50%);-moz-transform: translateX(-50%) translateY(-50%);-webkit-transform: translateX(-50%) translateY(-50%);transform: translateX(-50%) translateY(-50%); no-repeat;background-size: cover;  object-fit: cover;
+}
+div.review-content > p {
+	font-family: Lato;
+}

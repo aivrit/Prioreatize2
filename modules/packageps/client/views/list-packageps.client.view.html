@@ -1,0 +1,16 @@
+<section>
+  <div class="page-header">
+    <h1>My Packages</h1>
+  </div>
+    <div class=row" ng-repeat="packagep in vm.packageps  | filter:userfilter">
+      <div id="{{packagep._id}}">
+       <label style="width: 70%;" class="btn btn-default" ng-bind="packagep.name">
+      </label>
+        <button style="width: 14%;" class="btn btn-default" ng-click="edit(packagep._id)"> Edit </button>
+        <button style="width: 14%;" class="btn btn-default" ng-click="delete(packagep._id)"> Delete </button>
+      </div>
+    </div>
+  <div class="alert alert-warning text-center" ng-if="vm.packageps.$resolved && (vm.packageps | filter:userfilter).length == 0">
+    No Custom Packages Yet. <a href="/packageps/create/"> Create One!</a>
+  </div>
+</section>

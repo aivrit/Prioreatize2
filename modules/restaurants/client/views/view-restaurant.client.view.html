@@ -1,0 +1,109 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.restaurant.name}}</h1>
+    <div>
+      <span class="restaurant_details">
+        <span class="glyphicon glyphicon-map-marker"></span>
+        <span>{{vm.restaurant.address}}, {{vm.restaurant.city}}, {{vm.restaurant.state}}</span>
+      </span>
+      <span class="restaurant_details">
+        <span ng-repeat="category in vm.restaurant.categories">
+          {{category}}{{$last ? '' : ', '}}
+        </span>
+      </span>
+    </div>
+  </div>
+  <div class="restaurant-img">
+
+  </div>
+  <div class="page-header"><h2>Overview</h2></div>
+  <div class="overview-content">
+    <div class="restaurant-rating">
+    <span class="score">{{vm.restaurant.stars}}</span>
+    <div class="rating-stars">
+      <rating-stars stars={{vm.restaurant.stars}}></rating-stars>
+    </div>
+    <span class="review-count">{{vm.restaurant.review_count}} Reviews</span>
+  </div>
+  <div class="page-header rating-summary">
+    <div class="rating-summary-container">
+      <div class="rating-summary-container-up">
+        <div class="rating-category">
+          <span class="text">Food Quality</span>
+          <rating-stars stars={{vm.restaurant.qualityscore}}></rating-stars>
+        </div>
+        <div class="rating-category">
+          <span class="text">Service Quality</span>
+          <rating-stars stars={{vm.restaurant.quality_of_service_score}}></rating-stars>
+        </div>
+        <div class="rating-category">
+          <span class="text">Fast Served</span>
+          <rating-stars stars={{vm.restaurant.fast_score}}></rating-stars>
+        </div>
+        <div class="rating-category">
+          <span class="text">Cheap</span>
+          <rating-stars stars={{vm.restaurant.cheap}}></rating-stars>
+        </div>
+        <div class="rating-category">
+          <span class="text">Large Portions</span>
+          <rating-stars stars={{vm.restaurant.big_dish_score}}></rating-stars>
+        </div>
+        <div class="rating-category">
+          <span class="text">Quiet</span>
+          <rating-stars stars={{vm.restaurant.noise_level}}></rating-stars>
+        </div>
+      </div>
+      <div class="rating-summary-container-down">
+        <div class="rating-category">
+          <span class="text">Kid Friendly</span>
+          <rating-stars stars={{vm.restaurant.good_for_kids}}></rating-stars>
+        </div>
+        <div class="rating-category">
+          <span class="text">Casual</span>
+          <rating-stars stars={{vm.restaurant.casual}}></rating-stars>
+        </div>
+        <div class="rating-category">
+          <span class="text">Romantic</span>
+          <rating-stars stars={{vm.restaurant.romantic}}></rating-stars>
+        </div>
+        <div class="rating-category">
+          <span class="text">Upscale</span>
+          <rating-stars stars={{vm.restaurant.upscale}}></rating-stars>
+        </div>
+        <div class="rating-category">
+          <span class="text">Wheelchair Access</span>
+          <rating-stars stars={{vm.restaurant.wheelchair}}></rating-stars>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="group">
+    <label style="font-size: 19px;">Reviews Star Rating Count</label><br/>
+    <d3-bars class="restaurant-rating-graph" data="reviewsGroupByStars" count="count" name="_id" bar-height="35" ng-if="dataLoaded"></d3-bars>
+    <aside class="overview-map">
+      <map center="[{{vm.restaurant.latitude}}, {{vm.restaurant.longitude}}]" zoom="4">
+        <marker position="[{{vm.restaurant.latitude}}, {{vm.restaurant.longitude}}]"/>
+      </map>
+    </aside>
+  </div>
+  <div class="restaurant-reviews">
+    <h2>Reviews</h2>
+    <div class="review-container" ng-repeat="review in vm.reviews">
+      <div class="review-inner-container">
+        <div class="review-col-profile">
+          <div class="glyphicon glyphicon-user"></div>
+        </div>
+        <div class="review-col-data">
+          <div class="review-rating">
+            <rating-stars stars={{review.stars}}></rating-stars>
+            <span class="review-date">Reviewed on {{review.date}}</span>
+          </div>
+          <div class="review-content">
+            <p>{{review.text}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

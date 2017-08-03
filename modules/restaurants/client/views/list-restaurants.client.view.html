@@ -1,0 +1,47 @@
+<section>
+  <div class="page-header">
+    <h1>Restaurants</h1>
+  </div>
+  <div ng-if="vm.restaurants.length > 0">
+    <div class="group">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form class="form-inline" role="form">
+            <div class="form-group">
+              <label><input type="radio" ng-model="statistics" value="1"> Top 10 Restaurants by Review Count</label><br />
+              <label><input type="radio" ng-model="statistics" value="2"> Restaurant Distribution by State</label>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="page-header">
+        <d3-bars data="barData" count="review_count" name="name" ng-if="dataHasLoaded && statistics == 1" ng-show="statistics == 1"></d3-bars>
+        <d3-donut data="pieData" ng-if="dataHasLoaded && statistics == 2" ng-show="statistics == 2"></d3-donut>
+      </div>
+    </div>
+    <div class="page-header"><h2>Search Results</h2></div>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form class="form-inline" role="form">
+          <div class="form-group">
+            <label style="margin-right:0;">Filter:</label>
+              <input type="search" class="form-control input-sm"
+                 ng-model="search" placeholder="Filter Restaurants..."/>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="list-group">
+      <a ng-repeat="restaurant in vm.restaurants | filter:search as results"
+         ui-sref="restaurants.view({ restaurantId: restaurant._id })"
+         class="list-group-item">
+        <h4 class="list-group-item-heading" ng-bind="restaurant.name"></h4>
+        <h6><span class="glyphicon glyphicon-map-marker"></span>{{restaurant.address}}</h6>
+        <rating-stars stars={{restaurant.stars}}></rating-stars>
+      </a>
+    </div>
+  </div>
+  <i ng-if="!listHasLoaded" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+  <span class="sr-only">Loading...</span>
+  <h3 ng-if="listHasLoaded && vm.restaurants.length == 0"> We haven't found any restaurants! try expanding your search a little..</h3>
+</section>

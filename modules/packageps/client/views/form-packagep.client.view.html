@@ -1,0 +1,101 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.packagep._id ? 'Edit Package' : 'New Package'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.packagepForm" class="form-horizontal" ng-submit="vm.save(vm.form.packagepForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.packagep.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Package name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="romantic">Romantic Priority</label>
+          <input name="romantic" ng-model="vm.packagep.priorities[0]['romantic']" type="range" min="0" max="2" id="romantic" class="form-control" placeholder="Priority 1" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please Select a Priority.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="large-portions">Large Portions Priority</label>
+          <input name="large-portions" ng-model="vm.packagep.priorities[1]['large-portions']" type="range" min="0" max="2" id="large-portions" class="form-control" placeholder="Priority 1" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please Select a Priority.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="food-quality">Food Quality Priority</label>
+          <input name="food-quality" ng-model="vm.packagep.priorities[2]['food-quality']" type="range" min="0" max="2" id="food-quality" class="form-control" placeholder="Priority 1" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please Select a Priority.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="service-quality">Service Quality Priority</label>
+          <input name="service-quality" ng-model="vm.packagep.priorities[3]['service-quality']" type="range" min="0" max="2" id="service-quality" class="form-control" placeholder="Priority 1" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please Select a Priority.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="price">Price Priority</label>
+          <input name="price" ng-model="vm.packagep.priorities[4]['price']" type="range" min="0" max="2" id="price" class="form-control" placeholder="Priority 1" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please Select a Priority.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="kidfriendly">Kids Friendly Priority</label>
+          <input name="kidfriendly"  ng-model="vm.packagep.priorities[5]['kids-friendly']" type="range" min="0" max="2" id="kidfriendly" class="form-control" placeholder="Priority 1" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please Select a Priority.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="casual">Casual Priority</label>
+          <input name="casual" ng-model="vm.packagep.priorities[6]['casual']" type="range" min="0" max="2" id="casual" class="form-control" placeholder="Priority 1" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please Select a Priority.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="upscale">Upscale Priority</label>
+          <input name="upscale" ng-model="vm.packagep.priorities[7]['upscale']" type="range" min="0" max="2" id="upscale" class="form-control" placeholder="Priority 1" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please Select a Priority.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="quiet">Quiet Priority</label>
+          <input name="quiet" ng-model="vm.packagep.priorities[8]['quiet']" type="range" min="0" max="2" id="quiet" class="form-control" placeholder="Priority 1" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please Select a Priority.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="wheelchair">Wheelchair Access Priority</label>
+          <input name="wheelchair" ng-model="vm.packagep.priorities[9]['wheelchair-access']" type="range" min="0" max="2" id="wheelchair" class="form-control" placeholder="Priority 1" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please Select a Priority.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="fast">Fast Served Priority</label>
+          <input name="fast" ng-model="vm.packagep.priorities[10]['fast-served']" type="range" min="0" max="2" id="fast" class="form-control" placeholder="Priority 1" required>
+          <div ng-messages="vm.form.packagepForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Please Select a Priority.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.packagep._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

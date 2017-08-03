@@ -1,0 +1,65 @@
+<style>
+  .btn {
+    width: 135px;
+  }
+</style>
+<section>
+    <video class="backgroundvideo" preload="preload"  id="video" autoplay="autoplay" loop="loop">
+      <source src="/Food-1094.mp4" type="video/mp4"> </source>
+    </video>
+  <div class="text-center">
+    <div class="row" style="margin-top: 50px; padding: 50px 50px 30px 50px;">
+      <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12 site-header">
+        <h1 style="font-size: 80px">PriorEATize</h1>
+        <h3>Prioritize what you care about.</h3>
+        <h3>Find what you're looking for by...</h3>
+      </div>
+    </div>
+    <form action="/restaurants">
+      <div class="row packages">
+        <h4 class="category-filtering outline"><strong>Creating</strong> your own custom package</h4>
+        <a href='/packageps/create/' class="btn-new-pkg"><span>New Package</span></a>
+        <div class="package-container" style="text-align: center; display: flex; text-align: center; justify-content: center;">
+          <div class="col" style="margin: 0px;" ng-repeat="package in vm.packages | filter:userfilter">
+            <label class="btn-pkg" ng-bind="package.name" ng-click="choosePackage(package)"/>
+          </div>
+        </div>
+      </div>
+      <h4 class="outline category-filtering"><strong>Choosing</strong> what you care about</h4>
+      <div class="row">
+      <div ng-repeat="category in vm.categories">
+        <div class="btn-group" data-toggle="buttons" style="padding: 2px">
+          <label class="btn-category" ng-bind="category.name">
+            <input type="radio" name="nothing" id={{category.name}}"option0" autocomplete="off">
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" ng-value="0" name={{category.name}} id="{{category.name}}0" autocomplete="off" ng-model="selectedRadio" ng-change="changeRadio(category.name + 0)" ng-checked="vm[category.name]==0"> don't care
+          </label>
+          <label class="btn btn-success">
+            <input type="radio" ng-value="1" name={{category.name}} id="{{category.name}}1" autocomplete="off" ng-model="selectedRadio" ng-change="changeRadio(category.name + 1)" ng-checked="vm[category.name]==1"> important
+          </label>
+          <label class="btn btn-danger">
+            <input type="radio" ng-value="2" name={{category.name}} id="{{category.name}}2" autocomplete="off" ng-model="selectedRadio" ng-change="changeRadio(category.name + 2)" ng-checked="vm[category.name]==2"> critical
+          </label>
+        </div>
+      </div>
+      </div>
+      <h4 class="category-filtering outline"><strong>Searching</strong> by name or city</h4>
+      <div class="row">
+          <input type="text" placeholder="Dominos Pizza..." name="name">
+          <input type="text" placeholder="Los Angeles..." name="city">
+      </div>
+      <div class="row" style="padding: 2%">
+        <p class="lead" style="margin-bottom: 1px;">
+          <input type="submit" class="btn-submit" href="/search" value="Search"> </input>
+        </p>
+        <h4 class="outline">OR</h4>
+        <p class="lead" style="margin-bottom: 1px;">
+        <button type="button" class="btn-submit" ng-click="emitClick()" value="Feeling Lucky?"> Feeling Lucky?</button>
+        </p>
+        <h4 class="outline">Hit me 10 times fast!</h4>
+      </div>
+    </form>
+  </div>
+</section>
+
