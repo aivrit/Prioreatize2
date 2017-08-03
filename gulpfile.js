@@ -249,7 +249,8 @@ gulp.task('dropdb', function (done) {
 });
 
 gulp.task('mongo', function (cb) {
-  exec('ping 8.8.8.8', function (err, stdout, stderr) {
+  var path = __dirname + "\\db\\mean-dev\\";
+  exec('.\\mongorestore.exe -d mean-dev /gzip --dir ' + path, function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
